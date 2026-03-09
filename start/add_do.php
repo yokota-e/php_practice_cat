@@ -11,7 +11,8 @@ $name              = $_POST['name'] ?? '';
 $breed_id          = (int)$_POST['breed_id'] ?? '';
 $gender            = (int)$_POST['gender'] ?? '';
 $age               = (int)$_POST['age'] ?? '';
-$profile           = $_POST['profile'] ?? '';
+$profile           = empty($_POST['profile']) ? null : $_POST['profile'];
+
 
 // 入力データ保持用
 $_SESSION['form_data'] = [
@@ -90,13 +91,13 @@ VALUES(:name, :breed_id, :gender, :age, :profile, :image_name)';
   // 【TODO】SQL文を準備し、実行してください。（すべての変数について bindValue を行うこと。profileやimage_nameはNULLが許可される点に注意）
   $stmt = $db->prepare($sql);
 
-  $profile_for_db = ($profile === '') ? null : $profile;
+  // $profile_for_db = ($profile === '') ? null : $profile;
 
   $stmt->bindParam(':name', $name, PDO::PARAM_STR);
   $stmt->bindParam(':breed_id', $breed_id, PDO::PARAM_INT);
   $stmt->bindParam(':gender', $gender, PDO::PARAM_INT);
   $stmt->bindParam(':age', $age, PDO::PARAM_INT);
-  $stmt->bindParam(':profile', $profile_for_db, is_null($profile) ? PDO::PARAM_NULL : PDO::PARAM_STR);
+  $stmt->bindParam(':profile', $profile, is_null($profile) ? PDO::PARAM_NULL : PDO::PARAM_STR);
   $stmt->bindParam(':image_name', $image_name, is_null($image_name) ? PDO::PARAM_NULL : PDO::PARAM_STR);
 
   $stmt->execute();
