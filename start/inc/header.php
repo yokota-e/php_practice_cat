@@ -42,14 +42,17 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark mb-4">
     <div class="container">
-      <a class="navbar-brand" href="index.php">猫カフェ キャスト管理</a>
+      <a class="navbar-brand" href="index.php">猫カフェ 管理</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="add.php">新規登録</a>
+            <a class="nav-link" href="add.php">新規キャスト登録</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="order.php">注文一覧</a>
           </li>
         </ul>
       </div>
